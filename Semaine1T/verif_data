@@ -1,0 +1,23 @@
+Nom: DROUETBAPTISTE
+Version du Noyau: 4.19.128-microsoft-standard
+Compte: uid=1000(admin) gid=1000(admin) groups=1000(admin),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),999(docker)
+Machine: DESKTOP-695OHP2
+Horaire: Tue 10 Oct 2023 06:22:32 PM CEST
+Réseau: eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.25.248.141  netmask 255.255.240.0  broadcast 172.25.255.255
+        inet6 fe80::215:5dff:fe9f:f834  prefixlen 64  scopeid 0x20<link>
+        ether 00:15:5d:9f:f8:34  txqueuelen 1000  (Ethernet)
+        RX packets 972125  bytes 1446491490 (1.3 GiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 440283  bytes 31661521 (30.1 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 62962  bytes 69904006 (66.6 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 62962  bytes 69904006 (66.6 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
