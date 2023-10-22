@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 //#define CLEAR2CONTINUE
 #include "../include/traces.h" 
 
@@ -93,12 +92,11 @@ void etape2(void) {
 	int nbLines = 0;
 	int nbChars = 0;
 	int nbWords = 0;
+	int inWord = 0;
 
 	printf("Saisir des caractères au clavier (Ctrl+D) pour terminer\n");
 
 	while ( ( c = getchar() ) != EOF) {
-
-		printf("Caractère lu : '%c'\n",c);
 
 		switch(c) {
 			case '\n' : 
@@ -108,13 +106,20 @@ void etape2(void) {
 
 			case '\t' : 
 				nbChars++;
-				nbWords++;
+				if (inWord) {
+					nbWords++;
+					inWord = 0;
+				};
 				break;
 
 			default : 
+				inWord = 1;
 				nbChars++; 
 		}
 	}
+	printf("Nombre de caractères : %d\n", nbChars);
+	printf("Nombre de lignes : %d\n", nbLines);
+	printf("Nombre de mots : %d\n", nbWords);
 
 }
 
@@ -128,7 +133,51 @@ void etape3(void) {
 	// (rapport entre le nombre d’occurrences d’un caractère alphabétique 
 	// sur le nombre total de caractères alphabétiques).
 	/////////////////////////////////////////////////////////////////////////
+	char c ; 
+	int nbLines = 0;
+	int nbChars = 0;
+	int nbCharsAlpha = 0;
+	int nbWords = 0;
+	int occurencies[26] = {0};
+	int inWord = 0;
 
+	printf("Saisir des caractères au clavier (Ctrl+D) pour terminer\n");
+
+	while ( ( c = getchar() ) != EOF) {
+
+		switch(c) {
+			case '\n' : 
+				nbLines++;
+
+			case ' ' : 
+
+			case '\t' : 
+				nbChars++;
+				if (inWord) {
+					nbWords++;
+					inWord = 0;
+				}
+				break;
+
+			default : 
+				inWord = 1;
+				if (c>='a' && c<='z') {
+					occurencies[c-'a']++;
+					nbCharsAlpha++;
+				} else if (c>='A' && c<='Z') {
+					occurencies[c-'A']++;
+					nbCharsAlpha++;
+				}
+				nbChars++; 
+		}
+	}
+	printf("Nombre de caractères : %d\n", nbChars);
+	printf("Nombre de caractères alphabétiques : %d\n", nbCharsAlpha);
+	printf("Nombre de lignes : %d\n", nbLines);
+	printf("Nombre de mots : %d\n", nbWords);
+	for (int i = 0; i<26; i++) {
+		printf("Occurences de %c : %6d, fréquence : %6.3f %% \n", i+65, occurencies[i], 100.0 * occurencies[i]/nbCharsAlpha);
+	}
 }
 
 void etape4(void) {
@@ -143,6 +192,53 @@ void etape4(void) {
 	// pour créer un tableau dont la taille est passée en paramètre 
 	// et le renvoyer après l’avoir initialisé ? 
 	/////////////////////////////////////////////////////////////////////////
+	int occurences[29] = {0}; // 26 -> Lines, 27 -> Chars, 28 -> Words
+	
+	void countChars(int t[]) {
+		int inWord = 0;
+		char c;
+		while ( ( c = getchar() ) != EOF) {
 
+			switch(c) {
+				case '\n' : 
+					t[26]++;
+
+				case ' ' : 
+
+				case '\t' : 
+					t[27]++;
+					if (inWord) {
+						t[28]++;
+						inWord = 0;
+					}
+					break;
+
+				default : 
+					inWord = 1;
+					if (c>='a' && c<='z') {
+						t[c-'a']++;
+					} else if (c>='A' && c<='Z') {
+						t[c-'A']++;
+					}
+					t[27]++; 
+			}
+		}
+	}
+
+	void showStats (int t[]) {
+		printf("/===========================\\\n");
+		printf("|    Stat    |    Nombre    |\n");
+		printf("|===========================|\n");
+		printf("| Nb Lignes  |    %6d    |\n", t[26]);
+		printf("| Nb Carac   |    %6d    |\n", t[27]);
+		printf("| Nb Mots    |    %6d    |\n", t[28]);
+		for (int i = 0; i<26; i++) {
+			printf("|     %c      |    %6d    |\n", i+'A', t[i]);
+		}
+		printf("\\===========================/\n");
+	}
+
+	countChars(occurences);
+	showStats(occurences);
 
 }

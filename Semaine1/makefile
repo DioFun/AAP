@@ -1,4 +1,4 @@
-TARGETS=$(shell ls -d ex*)
+TARGETS=$(shell ls -d ex* tea)
 CLEANTARGETS=$(foreach dir,$(TARGETS),clean_$(dir))
 
 all: 
