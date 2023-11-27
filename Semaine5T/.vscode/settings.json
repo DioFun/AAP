@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "elt.h": "c",
+        "article.h": "c",
+        "traces.h": "c"
+    }
+}
