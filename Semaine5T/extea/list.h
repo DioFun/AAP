@@ -16,6 +16,7 @@ T_list removeFirstNode(T_list l);
 void showList_rec(T_list l);
 void showList_inv_rec(T_list l);
 void freeList_rec(T_list l);
+T_list removeLastNode(T_list l);
 
 #endif 
 
