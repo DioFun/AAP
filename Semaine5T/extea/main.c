@@ -6,6 +6,7 @@
 #include "../include/check.h"
 
 #include "queue_cld.h"
+#include "article.h"
 
 #define RAYON_COUNT 3
 
@@ -71,10 +72,11 @@ int main(int argc, char **argv) {
             case '2':
                 printf("Ajout d'un produit.\n");
                 printf("Identifiant rayon : ");
-                scanf("%100s", input);
-                int rayonId = atoi(input);
+                int rayonId;
+                scanf("%d", &rayonId);
                 printf("Nom du produit : ");
-                scanf("%100s", input);
+                scanf("%100s", input); // %[^\n]
+                fflush(stdin);
                 printf("Lecture : %s\n", input);
                 addProduct(rayons, rayonId, input);
                 printf("Produit ajouté.\n");
@@ -82,23 +84,23 @@ int main(int argc, char **argv) {
             case '3':
                 printf("Suppression d'un article d'un rayon.\n");
                 printf("Identifiant rayon : ");
-                scanf("%100s", input);
-                rayonId = atoi(input);
+                int rayonId;
+                scanf("%d", &rayonId);
                 dequeue(&(rayons[rayonId-1001].content));
                 printf("Article supprimé.\n");
                 break;
             case '4':
                 printf("Suppression d'un article par identifiant.\n");
                 printf("Identifiant article : ");
-                scanf("%100s", input);
-                int articleId = atoi(input);
+                int articleId;
+                scanf("%d", &articleId);
                 
                 break;
             case '5':
                 printf("Affichage d'un rayon.\n");
                 printf("Identifiant rayon : ");
-                scanf("%100s", input);
-                rayonId = atoi(input);
+                int rayonId;
+                scanf("%d", &rayonId);
                 showQueue(rayons[rayonId-1001].content);
                 break;
             case '6':

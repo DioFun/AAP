@@ -3,8 +3,7 @@
 #include "queue_cld.h"
 
 T_queue newQueue() {
-    T_queue q = {NULL, NULL};
-    return q;
+    return (T_queue) {NULL, NULL};
 }
 
 
