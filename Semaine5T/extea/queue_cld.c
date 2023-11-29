@@ -46,3 +46,11 @@ int count(T_queue q) {
     }
     return count;
 }
+
+int count_rec(T_queue q) {
+    if (q.head == NULL) {
+        return 0;
+    } else {
+        return 1 + count_rec((T_queue) {q.head->pNext, q.tail});
+    }
+}

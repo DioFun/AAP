@@ -15,5 +15,6 @@ void enqueue(T_queue *q, T_elt e);
 T_elt dequeue(T_queue *q);
 T_elt top(T_queue q);
 int count(T_queue q);
+int count_rec(T_queue q);
 
 #endif

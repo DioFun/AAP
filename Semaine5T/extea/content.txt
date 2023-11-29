@@ -1,0 +1,17 @@
+1001 Lait
+1001 Yaourt
+1002 Liquide vaisselle
+1003 Bananes
+1002 Acide citrique
+1001 Fromage cheddar
+1003 Pommes
+1001 Beurre
+1002 Nettoyant multi-usages
+1001 Crème fraîche
+1003 Carottes
+1002 Détergent à lessive
+1001 Gruyère
+1003 Fraises
+1001 Yaourt à la grecque
+1002 Désinfectant pour surfaces
+1003 Brocolis

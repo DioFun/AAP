@@ -80,9 +80,10 @@ T_list removeFirstNode(T_list l) {
 void showList_rec(T_list l) {
 	// Afficher la liste en commençant par sa tête 
 	// A faire en récursif 
-	assert(l!=NULL);
-	printf("%s\n", toString(l->data));
+	if (l == NULL) return;
+	printf("%s", toString(l->data));
 	if (l->pNext != NULL) {
+		printf(", ");
 		showList_rec(l->pNext);
 	}
 }
@@ -90,7 +91,7 @@ void showList_rec(T_list l) {
 void showList_inv_rec(T_list l) {
 	// Afficher la liste en commençant par sa queue 
 	// A faire en récursif 
-	assert(l!=NULL);
+	if (l == NULL) return;
 	if (l->pNext != NULL) {
 		showList_inv_rec(l->pNext);
 	}
@@ -100,7 +101,7 @@ void showList_inv_rec(T_list l) {
 void freeList_rec(T_list l) {
 	// Libérer la mémoire de toutes les cellules de la liste l 
 	// A faire en récursif
-	assert(l!=NULL);
+	if (l == NULL) return;
 	if (l->pNext != NULL) {
 		freeList_rec(l->pNext);
 	}
