@@ -16,7 +16,6 @@ typedef struct {
 } T_rayon;
 
 void showMenu();
-void scanline(char **pStr, int size); // Fonction de lecture d'une ligne de texte.
 void init(T_rayon **rayons);
 void addProduct(T_rayon *rayons);
 void deleteFirstProduct(T_rayon *rayons);
@@ -46,7 +45,7 @@ int main(int argc, char **argv) {
     // showQueue(q);
     // enqueue(&q, elt2);
     // showQueue(q);
-    // printf("%d\n", count(q));
+    // printf("%d\n", count_rec(q));
     // T_elt c = dequeue(&q);
     // showQueue(q);
     // printf("%s\n", toString(c));

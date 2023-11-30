@@ -111,7 +111,7 @@ void freeList_rec(T_list l) {
 T_list removeLastNode(T_list l) {
 	// Supprimer la queue de la liste 
 	// Renvoyer la nouvelle liste privée de sa dernière cellule
-	assert(l!=NULL);
+	if (l == NULL) return NULL;
 	if (l->pNext != NULL) {
 		l->pNext = removeLastNode(l->pNext);
 	} else {

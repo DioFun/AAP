@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "queue_cld.h"
 
 T_queue newQueue() {
@@ -28,6 +29,7 @@ void enqueue(T_queue *q, T_elt e) {
 }
 
 T_elt dequeue(T_queue * q) {
+    assert(q->head != NULL);
     T_list ret = q->head;
     q->head = q->head->pNext;
     return getFirstElt(ret);
