@@ -25,13 +25,25 @@ T_data hanoi(T_data d, int n) {
 
 	T_elt origine = d.pElt[0]; 
 	T_elt destination = d.pElt[1]; 
-	T_elt intermediaire = d.pElt[2]; 
-	
-	TOUCH_HERE("Ben là, c'est à vous ! \n");	
-
+	T_elt intermediaire = d.pElt[2];
 	// ordre de récurrence ?  
 	// cas de base :
+	if (n == 1) {
+		if (d.elt == 1) printf("%d => %d\n", origine, destination);
+		stats.nbOperations ++;
+		return genData(d.elt,d.pElt); 
+	}
 	// cas général : 
-
-	return genData(0,NULL);
+	d.pElt[1] = intermediaire;
+	d.pElt[2] = destination;
+	hanoi(genData(d.elt, d.pElt), n-1);
+	d.pElt[0] = origine;
+	d.pElt[1] = destination;
+	d.pElt[2] = intermediaire;
+	hanoi(genData(d.elt, d.pElt), 1);
+	d.pElt[0] = intermediaire;
+	d.pElt[1] = destination;
+	d.pElt[2] = origine;
+	hanoi(genData(d.elt, d.pElt), n-1);
+	return genData(d.elt,d.pElt);
 }

@@ -50,7 +50,6 @@ int main(int argc, char *argv[])
 	Test_Fn("RECHERCHE DICHOTOMIQUE", RechercheDicho, tab, MAX_ELT, m[4]);
 	Test_FnV2("RECHERCHE DICHOTOMIQUE", RechercheDicho, tab, 512, m[4]);
 
-/*
 	Initialiser (tab, 512,MODE_TAB_ORDONNE); // contient 512 valeurs de 0 à 511
 
 	d = RechercheDicho_rec(genData(0,tab) , 512);
@@ -71,7 +70,6 @@ int main(int argc, char *argv[])
 	
 	Test_Fn("RECHERCHE DICHOTOMIQUE REC", RechercheDicho_rec, tab, MAX_ELT, m[4]);
 	Test_FnV2("RECHERCHE DICHOTOMIQUE REC", RechercheDicho_rec, tab, 512, m[4]);
-*/
 	
 
 }

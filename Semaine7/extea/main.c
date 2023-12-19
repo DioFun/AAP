@@ -36,12 +36,7 @@ int main () {
     printf("\n");
     freeList(l);
     l = NULL;
-    system("dot extea/output/graph/merge_sort_end.dot -T png -o extea/output/graph/merge_sort_end.png");
-    system("dot extea/output/graph/merge_sort1_end.dot -T png -o extea/output/graph/merge_sort1_end.png");
-    system("dot extea/output/graph/merge_sort2_end.dot -T png -o extea/output/graph/merge_sort2_end.png");
-    system("dot extea/output/graph/merge_sort1_beg.dot -T png -o extea/output/graph/merge_sort1_beg.png");
-    system("dot extea/output/graph/merge_sort2_beg.dot -T png -o extea/output/graph/merge_sort2_beg.png");
-    // Test_Fn("Merge sort list", merge_sort, &l, MAX_LGTH, m[MODE_LIST_ALEATOIRE]);
-    // Test_FnV2("Merge sort list", merge_sort, &l, MAX_LGTH, m[MODE_LIST_ALEATOIRE]);
+    Test_Fn("Merge sort list", merge_sort, &l, MAX_LGTH, m[MODE_LIST_ALEATOIRE]);
+    Test_FnV2("Merge sort list", merge_sort, &l, MAX_LGTH, m[MODE_LIST_ALEATOIRE]);
     return 0;
 }

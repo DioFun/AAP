@@ -1,7 +1,7 @@
 #include "merge_sort.h"
 #include <assert.h>
 
-T_node * merge (T_node * l1, T_node * l2) {
+T_node * merge (T_node * l1, T_node * l2) { // l1 et l2 sont des listes triées
     T_node * l = NULL;
     if (l1 == NULL) {
         return l2;
@@ -20,16 +20,16 @@ T_node * merge (T_node * l1, T_node * l2) {
     return l;
 }
 
-T_data merge_sortbis(T_data d, int n) {
+T_data merge_sort(T_data d, int n) { // n est inutile ici mais nécessaire pour l'interface
     T_list * l = d.pElt;
     stats.nbComparisons++;
-    if ((*l) == NULL || (*l)->pNext == NULL) {
+    if ((*l) == NULL || (*l)->pNext == NULL) { // On verifie si la liste est vide ou si elle ne contient qu'un seul élément
         if ((*l) != NULL) stats.nbComparisons++;
-        return genData(0, l);
-    }
-    T_node * l1 = *l; stats.nbOperations++;
-    T_node * l2 = (*l)->pNext; stats.nbOperations++;
-    while (l2 != NULL) {
+        return genData(0, l);   // On retourne la liste
+    } 
+    T_node * l1 = *l; stats.nbOperations++; // On initialise l1 à la tête de la liste
+    T_node * l2 = (*l)->pNext; stats.nbOperations++; // On initialise l2 à l'élément suivant de la liste
+    while (l2 != NULL) { // On parcourt la liste jusqu'à ce que l2 soit NULL
         l2 = l2->pNext; stats.nbOperations++;
         if (l2 != NULL) {
             l1 = l1->pNext; stats.nbOperations++;
@@ -39,42 +39,13 @@ T_data merge_sortbis(T_data d, int n) {
     l2 = l1->pNext; stats.nbOperations++;
     l1->pNext = NULL; stats.nbOperations++;
     l1 = *l; stats.nbOperations++;
-    merge_sortbis(genData(0, &l1), n);
-    merge_sortbis(genData(0, &l2), n);
+    merge_sort(genData(0, &l1), n);
+    merge_sort(genData(0, &l2), n);
     (*l) = merge(l1, l2); stats.nbOperations++;
     return genData(0, l);
 }
 
-T_data merge_sort(T_data d, int n) {
-    T_list * l = d.pElt;
-    stats.nbComparisons++;
-    if ((*l) == NULL || (*l)->pNext == NULL) {
-        if ((*l) != NULL) stats.nbComparisons++;
-        return genData(0, l);
-    }
-    T_node * l1 = *l; stats.nbOperations++;
-    T_node * l2 = (*l)->pNext; stats.nbOperations++;
-    while (l2 != NULL) {
-        l2 = l2->pNext; stats.nbOperations++;
-        if (l2 != NULL) {
-            l1 = l1->pNext; stats.nbOperations++;
-            l2 = l2->pNext; stats.nbOperations++;
-        }
-    }
-    l2 = l1->pNext; stats.nbOperations++;
-    l1->pNext = NULL; stats.nbOperations++;
-    l1 = *l; stats.nbOperations++;
-    generatePNG(l1, "extea/output/graph/merge_sort1_beg.dot");
-    generatePNG(l2, "extea/output/graph/merge_sort2_beg.dot");
-    merge_sortbis(genData(0, &l1), n);
-    merge_sortbis(genData(0, &l2), n);
-    generatePNG(l1, "extea/output/graph/merge_sort1_end.dot");
-    generatePNG(l2, "extea/output/graph/merge_sort2_end.dot");
-    (*l) = merge(l1, l2); stats.nbOperations++;
-    return genData(0, l);
-}
-
-void generatePNG(const T_list l, const char *filename) {
+void generatePNG(const T_list l, const char *filename) { // Génère un fichier .dot
     FILE *file = fopen(filename, "w");
     assert(file != NULL);
 
